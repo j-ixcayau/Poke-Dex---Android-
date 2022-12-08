@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".features.login.LoginActivity"
+            android:name=".features.auth.login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.PokeDex" />
     </application>

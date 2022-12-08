@@ -1,4 +1,4 @@
-package com.jixcayau.pokedex.features.login
+package com.jixcayau.pokedex.features.auth.login
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

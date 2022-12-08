@@ -1,4 +1,4 @@
-package com.jixcayau.pokedex.features.login
+package com.jixcayau.pokedex.features.auth.login
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
