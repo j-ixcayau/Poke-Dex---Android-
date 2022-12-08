@@ -4,7 +4,7 @@
     <item
         android:width="1080dp"
         android:height="1920dp"
-        android:drawable="@color/primary_color"
+        android:drawable="@color/primary"
         android:gravity="center" />
 
 </layer-list>

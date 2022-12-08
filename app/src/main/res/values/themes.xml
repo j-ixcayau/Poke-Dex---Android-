@@ -2,16 +2,16 @@
 <resources>
 
     <style name="Theme.PokeDex" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/primary_color</item>
-        <item name="android:colorBackground">@color/primary_color</item>
+        <item name="android:statusBarColor">@color/accent</item>
+        <item name="android:colorBackground">@color/primary</item>
     </style>
 
     <style name="Theme.SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_layout</item>
-        <item name="android:colorBackground">@color/primary_color</item>
-        <item name="android:statusBarColor">@color/primary_color</item>
-        <item name="colorPrimary">@color/primary_color</item>
-        <item name="colorPrimaryDark">@color/primary_color</item>
-        <item name="colorAccent">@color/primary_color</item>
+        <item name="android:colorBackground">@color/primary</item>
+        <item name="android:statusBarColor">@color/accent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorAccent">@color/primary</item>
     </style>
 </resources>
