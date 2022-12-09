@@ -11,7 +11,7 @@ class Colors {
 
         // Other Colors
         val White = Color.White
-        val AccentButton = Color(0xFF8154DF).copy(0.6F)
+//        val AccentButton = Color(0xFF8154DF).copy(0.6F)
         val AuthAccentGradient = Color(0xFFA17EE6)
         val Error = Color(0xFFE53945)
     }

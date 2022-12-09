@@ -6,6 +6,9 @@ class AppSpaces {
         /** 0 */
         const val zero = 0
 
+        /** 1 */
+        const val xxs3 = 1
+
         /** 2 */
         const val xxs2 = 2
 

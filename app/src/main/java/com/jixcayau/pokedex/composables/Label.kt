@@ -12,7 +12,7 @@ import com.jixcayau.pokedex.utils.AppSpaces
 fun Label(
     value: String,
     type: LabelType = LabelType.Normal,
-    color: Color = Color.Unspecified,
+    color: Color = Color.Black,
 ) {
     Text(
         text = value,

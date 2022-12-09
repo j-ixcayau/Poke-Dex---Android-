@@ -1,24 +1,55 @@
 package com.jixcayau.pokedex.features.auth.login
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import android.app.Activity
+import android.util.Log
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.facebook.CallbackManager
 import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
 import com.jixcayau.pokedex.features.auth.composables.AuthBody
+import com.jixcayau.pokedex.features.auth.composables.SocialButton
 import com.jixcayau.pokedex.utils.AppSpaces
 import com.jixcayau.pokedex.utils.RoutesPath
+import com.jixcayau.pokedex.utils.auth.FacebookAuthManager
+import com.jixcayau.pokedex.utils.auth.GoogleAuthManager
 
 @Composable
 fun LoginView(
     navController: NavHostController,
+    activity: Activity,
+    callbackManager: CallbackManager,
 ) {
     val emailValue = remember { mutableStateOf("") }
     val passwordValue = remember { mutableStateOf("") }
+
+    val context = LocalContext.current
+
+    // Google Auth
+    val googleAuthManager by remember {
+        mutableStateOf(GoogleAuthManager(context))
+    }
+    val googleLauncher = googleAuthManager.rememberFirebaseAuthLauncher(
+        onAuthComplete = {
+            navigateToDashboard(navController)
+        },
+        onAuthError = {
+            Log.d("error", "error")
+        },
+    )
+
+    // Facebook Auth
+    val facebookAuthManager by remember {
+        mutableStateOf(FacebookAuthManager(activity, callbackManager))
+    }
+    val facebookScope = rememberCoroutineScope()
 
     AuthBody(
         isLoading = false,
@@ -62,23 +93,52 @@ fun LoginView(
             VerticalSpace(AppSpaces.m)
 
             PokeButton(
-                text = "Iniciar sesión",
+                text = stringResource(R.string.login_button),
                 onTap = {
-                    navController.navigate(RoutesPath.Dashboard) {
-                        popUpTo(RoutesPath.Login) {
-                            inclusive = true
-                        }
-                    }
-                }
+
+                },
             )
+
+            VerticalSpace(AppSpaces.m)
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+            ) {
+                SocialButton(
+                    iconId = R.drawable.ic_facebook_logo,
+                    onTap = {
+                        facebookAuthManager.launch(
+                            onAuthComplete = {
+                                navigateToDashboard(navController)
+                            },
+                            onAuthError = {
+
+                            },
+                            scope = facebookScope
+                        )
+                    },
+                )
+
+                HorizontalSpace(AppSpaces.m)
+
+                SocialButton(
+                    iconId = R.drawable.ic_google_logo,
+                    onTap = {
+                        googleLauncher.launch(googleAuthManager.getIntent())
+                    },
+                )
+            }
+
+            VerticalSpace(AppSpaces.m)
         },
     )
 }
 
-@Preview
-@Composable
-private fun ContentPreview() {
-    LoginView(
-        navController = rememberNavController(),
-    )
+private fun navigateToDashboard(navController: NavHostController) {
+    navController.navigate(RoutesPath.Dashboard) {
+        popUpTo(RoutesPath.Login) {
+            inclusive = true
+        }
+    }
 }
