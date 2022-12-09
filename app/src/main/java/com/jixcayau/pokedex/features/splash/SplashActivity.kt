@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import com.jixcayau.pokedex.features.auth.login.LoginActivity
+import com.jixcayau.pokedex.features.main.MainActivity
 
 class SplashActivity : ComponentActivity() {
 
@@ -20,12 +20,14 @@ class SplashActivity : ComponentActivity() {
     @Composable
     private fun View() {
         SplashView(
-            onComplete = { configNavigation() }
+            onComplete = {
+                configNavigation()
+            },
         )
     }
 
     private fun configNavigation() {
-        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
         finish()
     }
 }
