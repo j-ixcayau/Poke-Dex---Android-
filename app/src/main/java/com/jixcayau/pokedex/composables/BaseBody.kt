@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.jixcayau.pokedex.ui.theme.Colors
@@ -36,6 +37,7 @@ fun BaseBody(
                     .background(
                         color = color,
                     ),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 children()
             }

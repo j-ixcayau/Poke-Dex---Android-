@@ -10,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.jixcayau.pokedex.utils.AppSpaces
 
@@ -26,10 +27,9 @@ fun Clickable(
         modifier = Modifier
             .clip(shape)
             .clickable(
-                interactionSource = remember {
-                    MutableInteractionSource()
-                },
-                indication = rememberRipple(bounded = false),
+                role = Role.Button,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = rememberRipple(bounded = false, radius = 24.dp),
                 onClick = {
                     onTap()
                 },

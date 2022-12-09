@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">PokeDex</string>
+    <string name="app_name_with_author">PokeDex by JIxca</string>
+
+    <!--  Login  -->
+    <string name="dont_have_account_yet">¿Aún no tienes una cuenta?</string>
+    <string name="sign_in">Registrarse</string>
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="login_subtitle">Ingresa tus datos abajo</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+
+
+    <!--  Register  -->
+    <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
+    <string name="login">Iniciar sesión</string>
+
+
+
 </resources>

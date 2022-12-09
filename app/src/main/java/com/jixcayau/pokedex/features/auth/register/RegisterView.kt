@@ -2,9 +2,11 @@ package com.jixcayau.pokedex.features.auth.register
 
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.features.auth.composables.AuthBody
 
 @Composable
@@ -15,8 +17,8 @@ fun RegisterView(
         onBackTap = {
             navController.popBackStack()
         },
-        actionTitle = "Ya tienes cuenta?",
-        actionButtonText = "Inicia sesión",
+        actionTitle = stringResource(R.string.already_have_an_account),
+        actionButtonText = stringResource(R.string.login),
         actionOnTap = {
             navController.popBackStack()
         },
