@@ -1,35 +1,53 @@
 package com.jixcayau.pokedex.features.auth.login
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
-import com.jixcayau.pokedex.composables.BaseBody
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.jixcayau.pokedex.domain.entities.Region
+import com.jixcayau.pokedex.features.auth.composables.AuthBody
+import com.jixcayau.pokedex.utils.RoutesPath
 
 @Composable
-fun LoginView() {
-    val viewModel = remember {
+fun LoginView(
+    navController: NavHostController,
+) {
+    /*val viewModel = remember {
         LoginViewModel()
     }
-    viewModel.loadRegions()
+    viewModel.loadRegions()*/
 
-    Content(
-        regions = viewModel.regions,
+    AuthBody(
+        onBackTap = null,
+        actionTitle = "Aun no tienes cuenta?",
+        actionButtonText = "Registrarse",
+        actionOnTap = {
+            navController.navigate(RoutesPath.Register)
+        },
+        content = {
+
+        }
     )
+
+    /*Content(
+        regions = viewModel.regions,
+    )*/
 }
 
 @Composable
 private fun Content(
     regions: List<Region>,
 ) {
-    BaseBody {
+    /*BaseBody {
         regions.forEach {
             Text(
                 text = it.name,
             )
         }
-    }
+    }*/
+    LoginView(
+        navController = rememberNavController()
+    )
 }
 
 

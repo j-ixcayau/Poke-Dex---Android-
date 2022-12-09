@@ -9,6 +9,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.jixcayau.pokedex.ui.theme.Colors
 import com.jixcayau.pokedex.ui.theme.PokeDexTheme
 
@@ -17,10 +18,11 @@ fun BaseBody(
     modifier: Modifier = Modifier,
     allowScroll: Boolean = true,
     children: @Composable ColumnScope.() -> Unit,
+    color: Color = Colors.PrimaryColor
 ) {
     PokeDexTheme {
         Surface(
-            color = Colors.PrimaryColor,
+            color = color,
             modifier = Modifier.fillMaxSize()
         ) {
             var newModifier = modifier
@@ -32,7 +34,7 @@ fun BaseBody(
                 modifier = newModifier
                     .fillMaxSize()
                     .background(
-                        color = Colors.PrimaryColor,
+                        color = color,
                     ),
             ) {
                 children()

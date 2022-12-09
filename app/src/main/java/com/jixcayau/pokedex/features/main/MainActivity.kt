@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jixcayau.pokedex.features.auth.login.LoginView
+import com.jixcayau.pokedex.features.auth.register.RegisterView
 import com.jixcayau.pokedex.utils.RoutesPath
 
 class MainActivity : ComponentActivity() {
@@ -29,7 +30,14 @@ class MainActivity : ComponentActivity() {
             startDestination = RoutesPath.Login,
         ) {
             composable(RoutesPath.Login) {
-                LoginView()
+                LoginView(
+                    navController = navController,
+                )
+            }
+            composable(RoutesPath.Register) {
+                RegisterView(
+                    navController = navController,
+                )
             }
         }
     }
