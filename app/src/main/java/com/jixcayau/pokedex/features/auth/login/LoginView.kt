@@ -21,6 +21,7 @@ fun LoginView(
     val passwordValue = remember { mutableStateOf("") }
 
     AuthBody(
+        isLoading = false,
         onBackTap = null,
         actionTitle = stringResource(R.string.dont_have_account_yet),
         actionButtonText = stringResource(R.string.sign_in),
@@ -63,7 +64,11 @@ fun LoginView(
             PokeButton(
                 text = "Iniciar sesión",
                 onTap = {
-
+                    navController.navigate(RoutesPath.Dashboard) {
+                        popUpTo(RoutesPath.Login) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         },

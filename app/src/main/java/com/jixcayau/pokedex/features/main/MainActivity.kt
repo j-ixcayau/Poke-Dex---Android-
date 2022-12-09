@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.jixcayau.pokedex.features.auth.login.LoginView
 import com.jixcayau.pokedex.features.auth.register.RegisterView
+import com.jixcayau.pokedex.features.dashboard.DashboardView
 import com.jixcayau.pokedex.utils.RoutesPath
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +39,9 @@ class MainActivity : ComponentActivity() {
                 RegisterView(
                     navController = navController,
                 )
+            }
+            composable(RoutesPath.Dashboard) {
+                DashboardView()
             }
         }
     }

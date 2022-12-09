@@ -14,6 +14,7 @@ fun RegisterView(
     navController: NavHostController,
 ) {
     AuthBody(
+        isLoading = false,
         onBackTap = {
             navController.popBackStack()
         },

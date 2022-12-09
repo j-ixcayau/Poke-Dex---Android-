@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.jixcayau.pokedex.ui.theme.Colors
-import com.jixcayau.pokedex.ui.theme.PokeDexTheme
 
 @Composable
 fun BaseBody(
@@ -21,26 +20,23 @@ fun BaseBody(
     children: @Composable ColumnScope.() -> Unit,
     color: Color = Colors.PrimaryColor
 ) {
-    PokeDexTheme {
-        Surface(
-            color = color,
-            modifier = Modifier.fillMaxSize()
-        ) {
-            var newModifier = modifier
-            if (allowScroll) {
-                newModifier = modifier.verticalScroll(rememberScrollState())
-            }
+    Surface(
+        color = color, modifier = Modifier.fillMaxSize()
+    ) {
+        var newModifier = modifier
+        if (allowScroll) {
+            newModifier = modifier.verticalScroll(rememberScrollState())
+        }
 
-            Column(
-                modifier = newModifier
-                    .fillMaxSize()
-                    .background(
-                        color = color,
-                    ),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                children()
-            }
+        Column(
+            modifier = newModifier
+                .fillMaxSize()
+                .background(
+                    color = color,
+                ),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            children()
         }
     }
 }

@@ -23,13 +23,16 @@ import com.jixcayau.pokedex.utils.AppSpaces
 
 @Composable
 fun AuthBody(
+    isLoading: Boolean,
     onBackTap: (() -> Unit)?,
     actionTitle: String,
     actionButtonText: String,
     actionOnTap: () -> Unit,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    PokeDexTheme {
+    BaseScaffold(
+        isLoading = isLoading,
+    ) {
         Scaffold(
             backgroundColor = Color.Transparent,
             modifier = Modifier.background(
