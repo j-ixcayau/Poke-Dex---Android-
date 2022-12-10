@@ -19,17 +19,18 @@ fun Clickable(
     radius: Int = AppSpaces.xxl,
     onTap: () -> Unit,
     child: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val shape = RoundedCornerShape(radius.dp)
 
     Card(
         shape = shape,
-        modifier = Modifier
+        modifier = modifier
             .clip(shape)
             .clickable(
                 role = Role.Button,
                 interactionSource = remember { MutableInteractionSource() },
-                indication = rememberRipple(bounded = false, radius = 24.dp),
+                indication = rememberRipple(bounded = false, radius = radius.dp),
                 onClick = {
                     onTap()
                 },

@@ -5,15 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.navigation.activity
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.facebook.CallbackManager
-import com.facebook.FacebookActivity
 import com.jixcayau.pokedex.features.auth.login.LoginView
 import com.jixcayau.pokedex.features.auth.register.RegisterView
 import com.jixcayau.pokedex.features.dashboard.DashboardView
+import com.jixcayau.pokedex.features.regions.RegionsView
+import com.jixcayau.pokedex.features.teams.create.CreateTeamView
+import com.jixcayau.pokedex.features.teams.list.TeamsView
 import com.jixcayau.pokedex.utils.RoutesPath
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
             navController = navController,
             startDestination = if (isUserLogged) RoutesPath.Dashboard else RoutesPath.Login,
         ) {
+            // Auth
             composable(RoutesPath.Login) {
                 LoginView(
                     navController = navController,
@@ -52,8 +54,28 @@ class MainActivity : ComponentActivity() {
                     callbackManager = callbackManager,
                 )
             }
+            // Dashboard
             composable(RoutesPath.Dashboard) {
-                DashboardView()
+                DashboardView(
+                    navController = navController,
+                )
+            }
+            composable(RoutesPath.Regions) {
+                RegionsView(
+                    navController = navController,
+                )
+            }
+            // Teams
+            composable(RoutesPath.Teams) {
+                TeamsView(
+                    navController = navController,
+                )
+            }
+            composable(RoutesPath.CreateTeam) {
+                CreateTeamView(
+                    navController = navController,
+                    regionId = it.arguments?.getString("regionId")?.toIntOrNull(),
+                )
             }
         }
     }

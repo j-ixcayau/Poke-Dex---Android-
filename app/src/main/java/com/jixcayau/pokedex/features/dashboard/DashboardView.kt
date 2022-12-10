@@ -1,27 +1,54 @@
 package com.jixcayau.pokedex.features.dashboard
 
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.jixcayau.pokedex.composables.BaseBody
-import com.jixcayau.pokedex.composables.BaseScaffold
-import com.jixcayau.pokedex.composables.Label
-import com.jixcayau.pokedex.composables.LabelType
+import androidx.navigation.NavHostController
+import com.jixcayau.pokedex.composables.*
+import com.jixcayau.pokedex.features.dashboard.composables.CategoriesCard
+import com.jixcayau.pokedex.ui.theme.Colors
+import com.jixcayau.pokedex.utils.RoutesPath
 
 @Composable
-fun DashboardView() {
+fun DashboardView(
+    navController: NavHostController,
+) {
     BaseScaffold {
-        Scaffold {
+        Scaffold(
+            topBar = {
+                Appbar(
+                    onBackTap = null, title = "Home"
+                )
+            },
+        ) {
             BaseBody(
                 modifier = Modifier.padding(it),
                 children = {
-                    Label(
-                        "Dashboard",
-                        type = LabelType.Title,
-                    )
-                }
+
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        CategoriesCard(
+                            title = "Regiones",
+                            onTap = {
+                                navController.navigate(RoutesPath.Regions)
+                            },
+                            color = Colors.regionCard,
+                        )
+
+                        CategoriesCard(
+                            title = "Grupos",
+                            onTap = {
+                                navController.navigate(RoutesPath.Teams)
+                            },
+                            color = Colors.TeamCard,
+                        )
+                    }
+                },
             )
         }
     }

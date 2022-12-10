@@ -2,6 +2,7 @@ package com.jixcayau.pokedex.composables
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
@@ -13,12 +14,14 @@ fun Label(
     value: String,
     type: LabelType = LabelType.Normal,
     color: Color = Color.Black,
+    modifier: Modifier = Modifier,
 ) {
     Text(
         text = value,
         fontWeight = type.fontWeight(),
         fontSize = type.fontSize(),
         color = color,
+        modifier = modifier,
     )
 }
 

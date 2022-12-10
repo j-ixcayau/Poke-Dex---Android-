@@ -108,6 +108,9 @@ fun AuthBody(
 
                 BaseBody(
                     modifier = Modifier
+                        .padding(
+                            horizontal = AppSpaces.s.dp,
+                        )
                         .clip(
                             RoundedCornerShape(
                                 topEnd = AppSpaces.l.dp,

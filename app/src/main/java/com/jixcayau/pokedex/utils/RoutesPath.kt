@@ -2,8 +2,13 @@ package com.jixcayau.pokedex.utils
 
 class RoutesPath {
     companion object {
-        const val Login = "AuthScreen"
-        const val Register = "Register"
-        const val Dashboard = "Dashboard"
+        const val Login = "authScreen"
+        const val Register = "register"
+        const val Dashboard = "dashboard"
+        const val Regions = "regions"
+        const val Teams = "teams"
+        const val CreateTeam = "createTeam/{regionId}"
+
+        const val CreateTeamToNavigate = "createTeam/"
     }
 }
