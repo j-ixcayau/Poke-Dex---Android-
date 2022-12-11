@@ -10,7 +10,11 @@ import com.jixcayau.pokedex.domain.entities.Region
 class RegionsViewModel : ViewModel() {
     var regions by mutableStateOf<List<Region>>(listOf())
 
-    fun loadRegions() {
+    init {
+        loadRegions()
+    }
+
+    private fun loadRegions() {
         if (regions.isNotEmpty()) return
 
         GetRegionsRepository().getRegions(

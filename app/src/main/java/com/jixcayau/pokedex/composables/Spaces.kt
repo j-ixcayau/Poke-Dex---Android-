@@ -21,9 +21,10 @@ fun VerticalSpace(
 @Composable
 fun HorizontalSpace(
     space: Int,
+    modifier: Modifier = Modifier,
 ) {
     Spacer(
-        modifier = Modifier.width(
+        modifier = modifier.width(
             space.dp,
         )
     )
