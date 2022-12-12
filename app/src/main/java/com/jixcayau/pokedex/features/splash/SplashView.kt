@@ -13,8 +13,8 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.jixcayau.pokedex.ui.theme.Colors
 import com.jixcayau.pokedex.ui.theme.PokeDexTheme
-import com.jixcayau.pokedex.ui.theme.PrimaryColor
 import com.jixcayau.pokedex.utils.Utils
 
 @Composable
@@ -22,7 +22,7 @@ fun SplashView(
     onComplete: () -> Unit,
 ) {
     val composition by rememberLottieComposition(
-        LottieCompositionSpec.JsonString(Utils.lottieJson)
+        LottieCompositionSpec.JsonString(Utils.lottieJson),
     )
     val logoAnimationState = animateLottieCompositionAsState(
         composition = composition,
@@ -30,15 +30,15 @@ fun SplashView(
 
     PokeDexTheme {
         Surface(
-            color = PrimaryColor,
-            modifier = Modifier.fillMaxSize()
+            color = Colors.PrimaryColor,
+            modifier = Modifier.fillMaxSize(),
         ) {
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(
-                        color = PrimaryColor
+                        color = Colors.PrimaryColor,
                     ),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -48,8 +48,7 @@ fun SplashView(
                     progress = { logoAnimationState.progress },
                     modifier = Modifier
                         .width(200.dp)
-                        .height(200.dp)
-
+                        .height(200.dp),
                 )
 
                 if (logoAnimationState.isAtEnd && logoAnimationState.isPlaying) {
@@ -64,7 +63,6 @@ fun SplashView(
 @Composable
 private fun SplashViewPreview() {
     SplashView(
-        onComplete = {
-        }
+        onComplete = {},
     )
 }

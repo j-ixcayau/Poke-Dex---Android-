@@ -43,6 +43,12 @@ dependencies {
     // Injection
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Gson
+    api "com.google.code.gson:gson:2.8.9"
+
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation 'com.google.firebase:firebase-database-ktx'
 }
 
 kapt {

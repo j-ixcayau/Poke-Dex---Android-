@@ -4,20 +4,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.jixcayau.pokedex.data.repositories.region.GetRegionsRepository
-import com.jixcayau.pokedex.domain.entities.Region
+import com.jixcayau.pokedex.utils.auth.FirebaseAuthManager
 
 class LoginViewModel : ViewModel() {
+    private val manager = FirebaseAuthManager()
 
-    var regions: List<Region> by mutableStateOf(listOf())
+    var customLogged by mutableStateOf(false)
 
-    fun loadRegions() {
-        GetRegionsRepository().getRegions(
-            {
-                regions = it.results
-            },
-            {
-                println("Error")
+    fun signIn(email: String, password: String) {
+        manager.signIn(
+            email = email,
+            password = password,
+            result = {
+                customLogged = it
             }
         )
     }
