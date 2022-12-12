@@ -5,12 +5,14 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.jixcayau.pokedex.data.repositories.pokemon.GetPokemonsRepository
+import com.jixcayau.pokedex.data.repositories.pokemon.GetPokemonsRepositoryImpl
 import com.jixcayau.pokedex.domain.entities.Pokemon
 import com.jixcayau.pokedex.domain.entities.Region
 import com.jixcayau.pokedex.domain.entities.Team
 
 class CreateTeamViewModel : ViewModel() {
+    private val pokemonsRepository = GetPokemonsRepositoryImpl()
+
     var pokemons by mutableStateOf<List<Pokemon>>(listOf())
     val pokemonsSelected = mutableStateListOf<Int>()
 
@@ -24,7 +26,7 @@ class CreateTeamViewModel : ViewModel() {
     private fun loadPokemons() {
         if (pokemons.isNotEmpty()) return
 
-        GetPokemonsRepository().getPokemons(
+        pokemonsRepository.getPokemons(
             {
                 pokemons = it.results
             },

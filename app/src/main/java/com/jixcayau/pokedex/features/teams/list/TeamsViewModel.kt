@@ -12,6 +12,8 @@ import com.jixcayau.pokedex.domain.entities.Team
 import com.jixcayau.pokedex.domain.network.teams.list.GetTeamsRequest
 
 class TeamsViewModel : ViewModel() {
+    private val getTeamsRepository = GetTeamsRepositoryImpl()
+
     var teams by mutableStateOf<List<Team>>(listOf())
 
     init {
@@ -21,7 +23,7 @@ class TeamsViewModel : ViewModel() {
     private fun getTeams() {
         val userId = Firebase.auth.currentUser?.uid ?: return
 
-        GetTeamsRepositoryImpl().getTeams(
+        getTeamsRepository.getTeams(
             request = GetTeamsRequest(
                 userId = userId,
             ),

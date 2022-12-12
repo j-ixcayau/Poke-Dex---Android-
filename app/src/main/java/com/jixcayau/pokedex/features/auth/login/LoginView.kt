@@ -14,6 +14,7 @@ import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
 import com.jixcayau.pokedex.features.auth.composables.AuthBody
 import com.jixcayau.pokedex.features.auth.composables.SocialButton
+import com.jixcayau.pokedex.features.auth.register.RegisterViewModel
 import com.jixcayau.pokedex.utils.AppSpaces
 import com.jixcayau.pokedex.utils.RoutesPath
 import com.jixcayau.pokedex.utils.auth.FacebookAuthManager
@@ -48,6 +49,15 @@ fun LoginView(
         mutableStateOf(FacebookAuthManager(activity, callbackManager))
     }
     val facebookScope = rememberCoroutineScope()
+
+    val viewModel = remember {
+        LoginViewModel()
+    }
+
+    if (viewModel.customLogged) {
+        viewModel.customLogged = false
+        navigateToDashboard(navController)
+    }
 
     AuthBody(
         isLoading = false,
@@ -93,7 +103,7 @@ fun LoginView(
             PokeButton(
                 text = stringResource(R.string.login_button),
                 onTap = {
-
+                    viewModel.signIn(emailValue.value, passwordValue.value)
                 },
             )
 

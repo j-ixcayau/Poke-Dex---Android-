@@ -2,12 +2,12 @@ package com.jixcayau.pokedex.data.repositories.pokemon
 
 import com.jixcayau.pokedex.data.utils.NetworkModule
 import com.jixcayau.pokedex.domain.network.pokemon.GetPokemonsResponse
-import com.jixcayau.pokedex.domain.repositories.pokemon.GetPokemonsDataSource
+import com.jixcayau.pokedex.domain.repositories.pokemon.GetPokemonsDataRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GetPokemonsRepository : GetPokemonsDataSource {
+class GetPokemonsRepositoryImpl : GetPokemonsDataRepository {
     override fun getPokemons(
         success: (response: GetPokemonsResponse) -> Unit,
         failure: () -> Unit,

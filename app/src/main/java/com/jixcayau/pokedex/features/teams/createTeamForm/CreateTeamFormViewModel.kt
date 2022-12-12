@@ -13,6 +13,7 @@ import com.jixcayau.pokedex.domain.network.teams.create.CreateTeamRequest
 import java.util.*
 
 class CreateTeamFormViewModel : ViewModel() {
+    private val createRepository = CreateTeamRepositoryImpl()
 
     var teamCreated by mutableStateOf(false)
 
@@ -29,7 +30,7 @@ class CreateTeamFormViewModel : ViewModel() {
         team.number = number.trim()
         team.type = type.trim()
 
-        CreateTeamRepositoryImpl().createTeam(
+        createRepository.createTeam(
             request = CreateTeamRequest(
                 userId = userId,
                 team = team,

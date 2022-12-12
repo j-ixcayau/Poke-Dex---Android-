@@ -2,12 +2,12 @@ package com.jixcayau.pokedex.data.repositories.region
 
 import com.jixcayau.pokedex.data.utils.NetworkModule
 import com.jixcayau.pokedex.domain.network.region.GetRegionsResponse
-import com.jixcayau.pokedex.domain.repositories.region.GetRegionsDataSource
+import com.jixcayau.pokedex.domain.repositories.region.GetRegionsDataRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GetRegionsRepository : GetRegionsDataSource {
+class GetRegionsRepositoryImpl : GetRegionsDataRepository {
     override fun getRegions(
         success: (response: GetRegionsResponse) -> Unit,
         failure: () -> Unit,
