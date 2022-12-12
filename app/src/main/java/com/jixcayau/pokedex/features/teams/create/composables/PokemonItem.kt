@@ -9,11 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jixcayau.pokedex.composables.*
+import com.jixcayau.pokedex.composables.HorizontalSpace
+import com.jixcayau.pokedex.composables.Label
+import com.jixcayau.pokedex.composables.LabelType
+import com.jixcayau.pokedex.composables.LoadNetworkImage
 import com.jixcayau.pokedex.domain.entities.Pokemon
 import com.jixcayau.pokedex.ui.theme.Colors
 import com.jixcayau.pokedex.utils.AppSpaces
-import com.jixcayau.pokedex.utils.gesturesDisabled
 import com.jixcayau.pokedex.utils.toCapitalize
 
 @Composable
@@ -52,7 +54,7 @@ fun PokemonItemSelectable(
             HorizontalSpace(AppSpaces.s)
 
             Label(
-                value = pokemon.name.toCapitalize(),
+                value = pokemon.name?.toCapitalize(),
                 type = LabelType.Subtitle,
             )
 

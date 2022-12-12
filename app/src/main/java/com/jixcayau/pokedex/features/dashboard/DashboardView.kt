@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
 import com.jixcayau.pokedex.features.dashboard.composables.CategoriesCard
 import com.jixcayau.pokedex.ui.theme.Colors
@@ -20,20 +22,19 @@ fun DashboardView(
         Scaffold(
             topBar = {
                 Appbar(
-                    onBackTap = null, title = "Home"
+                    onBackTap = null,
+                    title = stringResource(R.string.dashboard_appbar),
                 )
             },
         ) {
             BaseBody(
                 modifier = Modifier.padding(it),
                 children = {
-
-
                     Row(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         CategoriesCard(
-                            title = "Regiones",
+                            title = stringResource(R.string.dashboard_regions),
                             onTap = {
                                 navController.navigate(RoutesPath.Regions)
                             },
@@ -41,7 +42,7 @@ fun DashboardView(
                         )
 
                         CategoriesCard(
-                            title = "Grupos",
+                            title = stringResource(R.string.dashboard_teams),
                             onTap = {
                                 navController.navigate(RoutesPath.Teams)
                             },

@@ -41,7 +41,7 @@ fun RegionItem(
                 .padding(AppSpaces.xs.dp)
         ) {
             Label(
-                value = region.name.toCapitalize(),
+                value = region.name?.toCapitalize(),
                 type = LabelType.Subtitle,
             )
         }

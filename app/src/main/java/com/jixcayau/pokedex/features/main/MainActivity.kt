@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.facebook.CallbackManager
+import com.jixcayau.pokedex.domain.entities.toRegion
 import com.jixcayau.pokedex.features.auth.login.LoginView
 import com.jixcayau.pokedex.features.auth.register.RegisterView
 import com.jixcayau.pokedex.features.dashboard.DashboardView
@@ -74,7 +75,7 @@ class MainActivity : ComponentActivity() {
             composable(RoutesPath.CreateTeam) {
                 CreateTeamView(
                     navController = navController,
-                    regionId = it.arguments?.getString("regionId")?.toIntOrNull(),
+                    region = it.arguments?.getString("regionJson")?.toRegion(),
                 )
             }
         }

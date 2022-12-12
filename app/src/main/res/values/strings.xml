@@ -23,4 +23,24 @@
     <string name="register_subtitle">Te damos la bienvenida! :D</string>
     <string name="sign_in_button">Registrarse</string>
 
+    <!--  Dashboard  -->
+    <string name="dashboard_appbar">Home</string>
+    <string name="dashboard_regions">Regiones</string>
+    <string name="dashboard_teams">Grupos</string>
+
+    <!--  Regions  -->
+    <string name="regions_appbar">Regiones</string>
+    <string name="regions_title">Selecciona una región para crear un nuevo equipo</string>
+
+    <!--  Teams  -->
+    <string name="teams_appbar">Tus equipos</string>
+    <string name="teams_title">Estos son tus equipos</string>
+
+    <!--  Create Team  -->
+    <string name="createTeam_appbar">Crear Equipo</string>
+    <string name="createTeam_title">Selecciona los pokemones para crear tu equipo!</string>
+    <string name="createTeam_subTitle">Puedes escoger de 3 a 6 pokemones para que te acompañen en tu aventura… Se sabio!</string>
+    <string name="createTeam_pokemonsSelected">seleccionados</string>
+    <string name="createTeam_createButton">Crear equipo</string>
+
 </resources>

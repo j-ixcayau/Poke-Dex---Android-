@@ -7,7 +7,7 @@ class RoutesPath {
         const val Dashboard = "dashboard"
         const val Regions = "regions"
         const val Teams = "teams"
-        const val CreateTeam = "createTeam/{regionId}"
+        const val CreateTeam = "createTeam/{regionJson}"
 
         const val CreateTeamToNavigate = "createTeam/"
     }

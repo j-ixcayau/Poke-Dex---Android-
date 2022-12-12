@@ -5,24 +5,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.jixcayau.pokedex.utils.AppSpaces
 
 @Composable
 fun Label(
-    value: String,
+    modifier: Modifier = Modifier,
     type: LabelType = LabelType.Normal,
     color: Color = Color.Black,
-    modifier: Modifier = Modifier,
+    value: String?,
+    textAlign: TextAlign? = null,
 ) {
-    Text(
-        text = value,
-        fontWeight = type.fontWeight(),
-        fontSize = type.fontSize(),
-        color = color,
-        modifier = modifier,
-    )
+    value?.let {
+        Text(
+            text = value,
+            fontWeight = type.fontWeight(),
+            fontSize = type.fontSize(),
+            color = color,
+            modifier = modifier,
+            textAlign = textAlign,
+        )
+    }
 }
 
 

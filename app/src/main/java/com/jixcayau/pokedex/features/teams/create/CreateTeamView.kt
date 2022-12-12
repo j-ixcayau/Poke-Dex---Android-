@@ -1,29 +1,41 @@
 package com.jixcayau.pokedex.features.teams.create
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
+import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
+import com.jixcayau.pokedex.domain.entities.Region
 import com.jixcayau.pokedex.features.teams.create.composables.PokemonItemSelectable
 import com.jixcayau.pokedex.utils.AppSpaces
+import com.jixcayau.pokedex.utils.RoutesPath
 
 @Composable
 fun CreateTeamView(
     navController: NavHostController,
-    regionId: Int?,
+    region: Region?,
 ) {
-    if (regionId == null) {
+    if (region == null) {
         navController.popBackStack()
         return
     }
 
     val viewModel = remember {
         CreateTeamViewModel()
+    }
+
+    if (viewModel.teamCreated) {
+        viewModel.teamCreated = false
+        navController.navigate(RoutesPath.Teams) {
+            popUpTo(RoutesPath.Dashboard)
+        }
     }
 
     BaseScaffold {
@@ -33,7 +45,7 @@ fun CreateTeamView(
                     onBackTap = {
                         navController.popBackStack()
                     },
-                    title = "Crear Equipo",
+                    title = stringResource(R.string.createTeam_appbar),
                 )
             },
         ) {
@@ -41,23 +53,29 @@ fun CreateTeamView(
                 modifier = Modifier.padding(it),
                 allowScroll = false,
                 children = {
-
                     Label(
-                        value = "Selecciona los pokemones para crear tu equipo!",
+                        value = stringResource(R.string.createTeam_title),
                         type = LabelType.Subtitle,
+                        textAlign = TextAlign.Center,
                     )
 
                     VerticalSpace(AppSpaces.xxs)
 
                     Label(
-                        value = "Puedes escoger de 3 a 6 pokemones para que te acompañen en tu aventura... Se sabio!",
+                        value = stringResource(R.string.createTeam_subTitle),
+                        textAlign = TextAlign.Center,
                     )
 
                     VerticalSpace(AppSpaces.m)
 
+                    Label(
+                        value = "${viewModel.pokemonsSelected.size} ${stringResource(R.string.createTeam_pokemonsSelected)}",
+                        textAlign = TextAlign.Right,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+
                     LazyColumn(
-                        modifier = Modifier
-                            .weight(1F),
+                        modifier = Modifier.weight(1F),
                     ) {
                         items(
                             count = viewModel.pokemons.size,
@@ -75,9 +93,9 @@ fun CreateTeamView(
                     }
 
                     PokeButton(
-                        text = "Crear equipo",
+                        text = stringResource(R.string.createTeam_createButton),
                         onTap = {
-                            viewModel.createTeam()
+                            viewModel.createTeam(region)
                         },
                     )
                 },
