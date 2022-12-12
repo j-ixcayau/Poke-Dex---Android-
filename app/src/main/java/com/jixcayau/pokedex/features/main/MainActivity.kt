@@ -18,6 +18,7 @@ import com.jixcayau.pokedex.features.regions.RegionsView
 import com.jixcayau.pokedex.features.teams.create.CreateTeamView
 import com.jixcayau.pokedex.features.teams.createTeamForm.CreateTeamFormView
 import com.jixcayau.pokedex.features.teams.detail.TeamDetailView
+import com.jixcayau.pokedex.features.teams.edit.TeamEditView
 import com.jixcayau.pokedex.features.teams.list.TeamsView
 import com.jixcayau.pokedex.utils.RoutesPath
 
@@ -75,13 +76,13 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                 )
             }
-            composable(RoutesPath.CreateTeam) {
+            composable(RoutesPath.TeamCreate) {
                 CreateTeamView(
                     navController = navController,
                     region = it.arguments?.getString("regionJson")?.toRegion(),
                 )
             }
-            composable(RoutesPath.CreateTeamForm) {
+            composable(RoutesPath.TeamCreateForm) {
                 CreateTeamFormView(
                     navController = navController,
                     team = it.arguments?.getString("teamJson")?.toTeam(),
@@ -89,6 +90,12 @@ class MainActivity : ComponentActivity() {
             }
             composable(RoutesPath.TeamDetail) {
                 TeamDetailView(
+                    navController = navController,
+                    team = it.arguments?.getString("teamJson")?.toTeam(),
+                )
+            }
+            composable(RoutesPath.TeamEdit) {
+                TeamEditView(
                     navController = navController,
                     team = it.arguments?.getString("teamJson")?.toTeam(),
                 )

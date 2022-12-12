@@ -61,4 +61,8 @@
     <string name="teamDetail_edit">Modificar</string>
     <string name="teamDetail_delete">Eliminar</string>
 
+    <!--  Team Edit  -->
+    <string name="teamEdit_appbar">Modifica a tu equipo</string>
+    <string name="teamEdit_title">Modifica los campos que quieras cambiar</string>
+
 </resources>

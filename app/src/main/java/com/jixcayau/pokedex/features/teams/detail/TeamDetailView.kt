@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
 import com.jixcayau.pokedex.domain.entities.Team
+import com.jixcayau.pokedex.domain.entities.toJson
 import com.jixcayau.pokedex.features.teams.detail.composables.DetailInfoLabel
 import com.jixcayau.pokedex.features.teams.detail.composables.PokemonDetail
 import com.jixcayau.pokedex.ui.theme.Colors
@@ -122,7 +123,7 @@ fun TeamDetailView(
                     PokeButton(
                         text = stringResource(R.string.teamDetail_edit),
                         onTap = {
-
+                            navController.navigate("${RoutesPath.TeamEditToNavigate}${team.toJson()}")
                         },
                     )
 

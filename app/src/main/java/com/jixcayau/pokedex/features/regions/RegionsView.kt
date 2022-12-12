@@ -48,7 +48,7 @@ fun RegionsView(
                         RegionItem(
                             region = region,
                             onTap = {
-                                navController.navigate("${RoutesPath.CreateTeamToNavigate}${region.toJson()}")
+                                navController.navigate("${RoutesPath.TeamCreateToNavigate}${region.toJson()}")
                             },
                         )
                     }

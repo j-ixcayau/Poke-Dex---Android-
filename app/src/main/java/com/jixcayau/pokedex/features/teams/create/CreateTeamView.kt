@@ -34,7 +34,7 @@ fun CreateTeamView(
 
     if (viewModel.teamCreated && viewModel.team != null) {
         viewModel.teamCreated = false
-        navController.navigate("${RoutesPath.CreateTeamFormToNavigate}${viewModel.team!!.toJson()}") {
+        navController.navigate("${RoutesPath.TeamCreateFormToNavigate}${viewModel.team!!.toJson()}") {
             popUpTo(RoutesPath.Regions)
         }
     }

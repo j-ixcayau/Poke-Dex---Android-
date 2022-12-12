@@ -7,12 +7,14 @@ class RoutesPath {
         const val Dashboard = "dashboard"
         const val Regions = "regions"
         const val Teams = "teams"
-        const val CreateTeam = "createTeam/{regionJson}"
-        const val CreateTeamForm = "createTeamForm/{teamJson}"
+        const val TeamCreate = "teamCreate/{regionJson}"
+        const val TeamCreateForm = "teamCreateForm/{teamJson}"
         const val TeamDetail = "teamDetail/{teamJson}"
+        const val TeamEdit = "teamEdit/{teamJson}"
 
-        const val CreateTeamToNavigate = "createTeam/"
-        const val CreateTeamFormToNavigate = "createTeamForm/"
+        const val TeamCreateToNavigate = "teamCreate/"
+        const val TeamCreateFormToNavigate = "teamCreateForm/"
         const val TeamDetailToNavigate = "teamDetail/"
+        const val TeamEditToNavigate = "teamEdit/"
     }
 }
