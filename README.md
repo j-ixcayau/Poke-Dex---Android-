@@ -12,12 +12,14 @@ Android Studio Dolphin | 2021.3.1 Patch 1
 
 En la raíz del proyecto hay una carpeta con el nombre apk en el que se encuentra un apk para instalar
 
+Path: /apk/app-release.apk
+
 ## Autenticación
 
 Métodos de inicio de sesión:
 
--   Facebook: Por estar en modo dev solo se puede con usuarios de prueba
-  -   Correo: nrgmefqlmh_1670820681@tfbnw.net
-  -   Contraseña: Abcd123$
--   Google: Se puede con cualquier cuenta en el dispositivo
--   Correo y contraseña: En el mismo app se puede registrar e iniciar sesión con correo y contraseña
+- Google: Se puede con cualquier cuenta en el dispositivo
+- Correo y contraseña: En el mismo app se puede registrar e iniciar sesión con correo y contraseña
+- Facebook: Por estar en el proyecto en modo desarrollo solo se puede con usuarios de prueba
+  - Correo: nrgmefqlmh_1670820681@tfbnw.net
+  - Contraseña: Abcd123$
