@@ -42,7 +42,6 @@ fun LoadNetworkImage(
                 contentDescription = contentDescription,
                 contentScale = contentScale,
                 modifier = modifier,
-                colorFilter = colorFilter
             )
         },
         contentDescription = contentDescription,

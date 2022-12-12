@@ -13,6 +13,7 @@ import androidx.navigation.NavHostController
 import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
 import com.jixcayau.pokedex.domain.entities.Region
+import com.jixcayau.pokedex.domain.entities.toJson
 import com.jixcayau.pokedex.features.teams.create.composables.PokemonItemSelectable
 import com.jixcayau.pokedex.utils.AppSpaces
 import com.jixcayau.pokedex.utils.RoutesPath
@@ -31,10 +32,10 @@ fun CreateTeamView(
         CreateTeamViewModel()
     }
 
-    if (viewModel.teamCreated) {
+    if (viewModel.teamCreated && viewModel.team != null) {
         viewModel.teamCreated = false
-        navController.navigate(RoutesPath.Teams) {
-            popUpTo(RoutesPath.Dashboard)
+        navController.navigate("${RoutesPath.CreateTeamFormToNavigate}${viewModel.team!!.toJson()}") {
+            popUpTo(RoutesPath.Regions)
         }
     }
 

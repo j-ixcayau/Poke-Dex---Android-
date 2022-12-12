@@ -11,12 +11,13 @@ class Colors {
 
         // Other Colors
         val White = Color.White
+        val Black = Color.Black
         val AuthAccentGradient = Color(0xFFA17EE6)
         val Error = Color(0xFFE53945)
 
         // Categories Color
         val TeamCard = Color(0xFF5FB69B)
         val regionCard = Color(0xFFE67461)
-
+        val logOutCard = Color(0xFF619CF5)
     }
 }

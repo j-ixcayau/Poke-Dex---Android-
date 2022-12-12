@@ -2,6 +2,7 @@ package com.jixcayau.pokedex.features.teams.list
 
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -11,6 +12,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavHostController
 import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
+import com.jixcayau.pokedex.domain.entities.toJson
+import com.jixcayau.pokedex.features.teams.list.composables.TeamItem
+import com.jixcayau.pokedex.utils.RoutesPath
 
 @Composable
 fun TeamsView(
@@ -40,9 +44,20 @@ fun TeamsView(
                         textAlign = TextAlign.Center,
                     )
 
-                    for (team in viewModel.teams) {
-                        Label(
-                            value = team.name ,
+                    LazyColumn(
+                        modifier = Modifier.weight(1F),
+                    ) {
+                        items(
+                            count = viewModel.teams.size,
+                            itemContent = { index ->
+                                val team = viewModel.teams[index]
+                                TeamItem(
+                                    team = team,
+                                    onTap = {
+                                        navController.navigate("${RoutesPath.TeamDetailToNavigate}${team.toJson()}")
+                                    }
+                                )
+                            },
                         )
                     }
                 },

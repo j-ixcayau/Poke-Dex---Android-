@@ -76,7 +76,14 @@ class FacebookAuthManager(
         )
     }
 
-    fun logout() {
-        manager.logOut()
+    companion object {
+        fun logout() {
+            try {
+                LoginManager.getInstance().logOut()
+                Firebase.auth.signOut()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
     }
 }

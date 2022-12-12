@@ -1,22 +1,28 @@
 package com.jixcayau.pokedex.composables
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
+import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.ui.theme.Colors
+import com.jixcayau.pokedex.utils.AppSpaces
 import com.jixcayau.pokedex.utils.StringValidations
 
 @Composable
@@ -51,6 +57,7 @@ fun Input(
             errorBorderColor = Colors.Error,
             errorLabelColor = Colors.Error,
             errorCursorColor = Colors.Error,
+            textColor = Colors.Black,
         ),
         keyboardOptions = KeyboardOptions(
             keyboardType = type.keyboardType(),
@@ -90,15 +97,20 @@ fun InputType.trailingIcon(
 ): @Composable (() -> Unit)? {
     if (this == InputType.Password) {
         return {
-            val image = if (isTextVisible.value) Icons.Default.Share
-            else Icons.Default.Add
+            val image = if (isTextVisible.value) R.drawable.ic_visibility_off
+            else R.drawable.ic_visibility
 
             IconButton(
                 onClick = {
                     isTextVisible.value = !isTextVisible.value
                 },
             ) {
-                Icon(image, "")
+                Image(
+                    painter = painterResource(image),
+                    contentDescription = image.toString(),
+                    colorFilter = ColorFilter.tint(Colors.Accent),
+                    modifier = Modifier.size(AppSpaces.xl.dp),
+                )
             }
         }
     }

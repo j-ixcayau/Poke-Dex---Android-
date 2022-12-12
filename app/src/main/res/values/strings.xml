@@ -8,17 +8,16 @@
 
     <!--  Login  -->
     <string name="dont_have_account_yet">¿Aún no tienes una cuenta?</string>
-    <string name="sign_in">Registrarse</string>
+    <string name="sign_in">Registrate</string>
     <string name="login_title">Iniciar Sesión</string>
     <string name="login_subtitle">Ingresa tus datos abajo</string>
     <string name="email">Correo</string>
     <string name="password">Contraseña</string>
     <string name="login_button">Iniciar sesión</string>
 
-
     <!--  Register  -->
     <string name="already_have_an_account">¿Ya tienes una cuenta?</string>
-    <string name="login">Iniciar sesión</string>
+    <string name="login">Inicia sesión</string>
     <string name="register_title">Registrarse</string>
     <string name="register_subtitle">Te damos la bienvenida! :D</string>
     <string name="sign_in_button">Registrarse</string>
@@ -27,6 +26,7 @@
     <string name="dashboard_appbar">Home</string>
     <string name="dashboard_regions">Regiones</string>
     <string name="dashboard_teams">Grupos</string>
+    <string name="dashboard_logout">Cerrar sesión</string>
 
     <!--  Regions  -->
     <string name="regions_appbar">Regiones</string>
@@ -35,12 +35,30 @@
     <!--  Teams  -->
     <string name="teams_appbar">Tus equipos</string>
     <string name="teams_title">Estos son tus equipos</string>
+    <string name="teams_teamPokemons">Pokemones</string>
 
     <!--  Create Team  -->
     <string name="createTeam_appbar">Crear Equipo</string>
     <string name="createTeam_title">Selecciona los pokemones para crear tu equipo!</string>
     <string name="createTeam_subTitle">Puedes escoger de 3 a 6 pokemones para que te acompañen en tu aventura… Se sabio!</string>
     <string name="createTeam_pokemonsSelected">seleccionados</string>
-    <string name="createTeam_createButton">Crear equipo</string>
+    <string name="createTeam_createButton">Continuar</string>
+
+    <!--  Create Team Form  -->
+    <string name="createTeamForm_appbar">Crear Equipo</string>
+    <string name="createTeamForm_title">Rellena los siguientes campos para continuar</string>
+    <string name="createTeamForm_name">Nombre</string>
+    <string name="createTeamForm_number">Número</string>
+    <string name="createTeamForm_type">Tipo</string>
+
+    <!--  Team Details  -->
+    <string name="teamDetail_appbar">Detalle de equipo</string>
+    <string name="teamDetail_name">Nombre:</string>
+    <string name="teamDetail_number">Número:</string>
+    <string name="teamDetail_type">Tipo:</string>
+    <string name="teamDetail_region">Region:</string>
+    <string name="teamDetail_pokemons">Pokemones:</string>
+    <string name="teamDetail_edit">Modificar</string>
+    <string name="teamDetail_delete">Eliminar</string>
 
 </resources>

@@ -1,28 +1,21 @@
 package com.jixcayau.pokedex.features.teams.create
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import com.jixcayau.pokedex.data.repositories.pokemon.GetPokemonsRepository
-import com.jixcayau.pokedex.data.repositories.team.CreateTeamRepositoryImpl
 import com.jixcayau.pokedex.domain.entities.Pokemon
 import com.jixcayau.pokedex.domain.entities.Region
 import com.jixcayau.pokedex.domain.entities.Team
-import com.jixcayau.pokedex.domain.network.teams.create.CreateTeamRequest
-import java.util.*
-import kotlin.collections.ArrayList
 
 class CreateTeamViewModel : ViewModel() {
     var pokemons by mutableStateOf<List<Pokemon>>(listOf())
     val pokemonsSelected = mutableStateListOf<Int>()
 
     var teamCreated by mutableStateOf(false)
+    var team by mutableStateOf<Team?>(null)
 
     init {
         loadPokemons()
@@ -69,26 +62,10 @@ class CreateTeamViewModel : ViewModel() {
             pokemonsToCreate.add(pokemons[index])
         }
 
-        val userId = Firebase.auth.currentUser?.uid ?: return
-
-        CreateTeamRepositoryImpl().createTeam(
-            request = CreateTeamRequest(
-                userId = userId,
-                team = Team(
-                    id = UUID.randomUUID().toString(),
-                    name = "",
-                    number = "",
-                    type = "",
-                    pokemons = pokemonsToCreate,
-                    region = region,
-                ),
-            ),
-            success = {
-                teamCreated = it.success
-            },
-            failure = {
-                Log.d("teamCreated", "Team created")
-            }
+        team = Team(
+            pokemons = pokemonsToCreate,
+            region = region,
         )
+        teamCreated = true
     }
 }

@@ -10,11 +10,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.facebook.CallbackManager
 import com.jixcayau.pokedex.domain.entities.toRegion
+import com.jixcayau.pokedex.domain.entities.toTeam
 import com.jixcayau.pokedex.features.auth.login.LoginView
 import com.jixcayau.pokedex.features.auth.register.RegisterView
 import com.jixcayau.pokedex.features.dashboard.DashboardView
 import com.jixcayau.pokedex.features.regions.RegionsView
 import com.jixcayau.pokedex.features.teams.create.CreateTeamView
+import com.jixcayau.pokedex.features.teams.createTeamForm.CreateTeamFormView
+import com.jixcayau.pokedex.features.teams.detail.TeamDetailView
 import com.jixcayau.pokedex.features.teams.list.TeamsView
 import com.jixcayau.pokedex.utils.RoutesPath
 
@@ -76,6 +79,18 @@ class MainActivity : ComponentActivity() {
                 CreateTeamView(
                     navController = navController,
                     region = it.arguments?.getString("regionJson")?.toRegion(),
+                )
+            }
+            composable(RoutesPath.CreateTeamForm) {
+                CreateTeamFormView(
+                    navController = navController,
+                    team = it.arguments?.getString("teamJson")?.toTeam(),
+                )
+            }
+            composable(RoutesPath.TeamDetail) {
+                TeamDetailView(
+                    navController = navController,
+                    team = it.arguments?.getString("teamJson")?.toTeam(),
                 )
             }
         }

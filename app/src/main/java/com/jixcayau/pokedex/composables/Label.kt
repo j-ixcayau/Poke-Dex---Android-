@@ -17,11 +17,12 @@ fun Label(
     color: Color = Color.Black,
     value: String?,
     textAlign: TextAlign? = null,
+    fontWeight: FontWeight? = null,
 ) {
     value?.let {
         Text(
             text = value,
-            fontWeight = type.fontWeight(),
+            fontWeight = fontWeight ?: type.fontWeight(),
             fontSize = type.fontSize(),
             color = color,
             modifier = modifier,

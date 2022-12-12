@@ -8,6 +8,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -60,7 +61,11 @@ class GoogleAuthManager(context: Context) {
     }
 
     fun logout() {
-        signInClient.signOut()
-        Firebase.auth.signOut()
+        try {
+            signInClient.signOut()
+            Firebase.auth.signOut()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }

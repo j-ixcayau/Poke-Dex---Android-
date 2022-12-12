@@ -1,7 +1,6 @@
 package com.jixcayau.pokedex.data.repositories.team
 
 import com.google.firebase.database.ktx.getValue
-import com.google.gson.Gson
 import com.jixcayau.pokedex.data.utils.FirebaseUtils
 import com.jixcayau.pokedex.domain.entities.Team
 import com.jixcayau.pokedex.domain.network.teams.list.GetTeamsRequest
@@ -22,23 +21,10 @@ class GetTeamsRepositoryImpl : GetTeamsRepository {
                     val teams = ArrayList<Team>()
 
                     for (child in task.result.children) {
-                        val value = child.value
-
                         child.getValue<Team>()?.let {
                             teams.add(it)
                         }
                     }
-
-                    /*val teams = ArrayList<Team>()
-
-                    for (child in task.result.children) {
-                        val json = child.value
-
-                        if (json is String) {
-                            val team = Gson().fromJson(json, Team::class.java)
-                            teams.add(team)
-                        }
-                    }*/
 
                     success(
                         GetTeamsResponse(

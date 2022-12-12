@@ -1,24 +1,24 @@
 package com.jixcayau.pokedex.data.repositories.team
 
 import com.jixcayau.pokedex.data.utils.FirebaseUtils
-import com.jixcayau.pokedex.domain.network.teams.create.CreateTeamRequest
-import com.jixcayau.pokedex.domain.network.teams.create.CreateTeamResponse
-import com.jixcayau.pokedex.domain.repositories.teams.CreateTeamRepository
+import com.jixcayau.pokedex.domain.network.teams.delete.DeleteTeamRequest
+import com.jixcayau.pokedex.domain.network.teams.delete.DeleteTeamResponse
+import com.jixcayau.pokedex.domain.repositories.teams.DeleteTeamRepository
 
-class CreateTeamRepositoryImpl : CreateTeamRepository {
-    override fun createTeam(
-        request: CreateTeamRequest,
-        success: (response: CreateTeamResponse) -> Unit,
+class DeleteTeamRepositoryImpl : DeleteTeamRepository {
+    override fun deleteTeam(
+        request: DeleteTeamRequest,
+        success: (response: DeleteTeamResponse) -> Unit,
         failure: () -> Unit
     ) {
         val response =
             FirebaseUtils.getReference.child(FirebaseUtils.teamsCol).child(request.userId)
-                .child(request.team.id!!)
-                .setValue(request.team)
+                .child(request.teamId)
+                .removeValue()
 
         response.addOnCompleteListener {
             success(
-                CreateTeamResponse(
+                DeleteTeamResponse(
                     success = response.isSuccessful,
                 )
             )

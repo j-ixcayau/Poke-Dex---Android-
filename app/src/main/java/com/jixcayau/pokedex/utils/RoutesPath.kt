@@ -8,7 +8,11 @@ class RoutesPath {
         const val Regions = "regions"
         const val Teams = "teams"
         const val CreateTeam = "createTeam/{regionJson}"
+        const val CreateTeamForm = "createTeamForm/{teamJson}"
+        const val TeamDetail = "teamDetail/{teamJson}"
 
         const val CreateTeamToNavigate = "createTeam/"
+        const val CreateTeamFormToNavigate = "createTeamForm/"
+        const val TeamDetailToNavigate = "teamDetail/"
     }
 }
