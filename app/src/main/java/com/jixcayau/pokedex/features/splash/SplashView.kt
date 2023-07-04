@@ -1,7 +1,10 @@
 package com.jixcayau.pokedex.features.splash
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,6 +16,7 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.jixcayau.pokedex.extensions.splashBackground
 import com.jixcayau.pokedex.ui.theme.Colors
 import com.jixcayau.pokedex.ui.theme.PokeDexTheme
 import com.jixcayau.pokedex.utils.Utils
@@ -22,7 +26,7 @@ fun SplashView(
     onComplete: () -> Unit,
 ) {
     val composition by rememberLottieComposition(
-        LottieCompositionSpec.JsonString(Utils.lottieJson),
+        LottieCompositionSpec.JsonString(Utils.splashLottie),
     )
     val logoAnimationState = animateLottieCompositionAsState(
         composition = composition,
@@ -37,9 +41,7 @@ fun SplashView(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(
-                        color = Colors.PrimaryColor,
-                    ),
+                    .splashBackground(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {

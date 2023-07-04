@@ -12,6 +12,10 @@ class RegisterViewModel : ViewModel() {
     var customLogged by mutableStateOf(false)
 
     fun register(email: String, password: String) {
+        if(email.trim().isEmpty() || password.trim().isEmpty()){
+            return
+        }
+
         manager.register(
             email = email,
             password = password,

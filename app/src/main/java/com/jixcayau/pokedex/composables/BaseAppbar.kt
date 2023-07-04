@@ -1,20 +1,18 @@
 package com.jixcayau.pokedex.composables;
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.jixcayau.pokedex.extensions.splashBackground
 import com.jixcayau.pokedex.ui.theme.Colors
 import com.jixcayau.pokedex.utils.AppSpaces
 
@@ -60,13 +58,6 @@ fun Appbar(
         },
         modifier = Modifier
             .fillMaxWidth()
-            .background(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(
-                        Colors.Accent,
-                        Colors.AuthAccentGradient,
-                    )
-                )
-            ),
+            .splashBackground(),
     )
 }

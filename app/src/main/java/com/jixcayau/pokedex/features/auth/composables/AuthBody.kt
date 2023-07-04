@@ -1,24 +1,38 @@
 package com.jixcayau.pokedex.features.auth.composables
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jixcayau.pokedex.R
-import com.jixcayau.pokedex.composables.*
+import com.jixcayau.pokedex.composables.BaseBody
+import com.jixcayau.pokedex.composables.BaseScaffold
+import com.jixcayau.pokedex.composables.Clickable
+import com.jixcayau.pokedex.composables.HorizontalSpace
+import com.jixcayau.pokedex.composables.Label
+import com.jixcayau.pokedex.composables.LabelType
+import com.jixcayau.pokedex.composables.VerticalSpace
+import com.jixcayau.pokedex.extensions.splashBackground
 import com.jixcayau.pokedex.ui.theme.Colors
-import com.jixcayau.pokedex.ui.theme.PokeDexTheme
 import com.jixcayau.pokedex.utils.AppSpaces
 
 @Composable
@@ -35,14 +49,7 @@ fun AuthBody(
     ) {
         Scaffold(
             backgroundColor = Color.Transparent,
-            modifier = Modifier.background(
-                brush = Brush.horizontalGradient(
-                    colors = listOf(
-                        Colors.Accent,
-                        Colors.AuthAccentGradient,
-                    )
-                )
-            ),
+            modifier = Modifier.splashBackground(),
             topBar = {
                 TopAppBar(
                     backgroundColor = Color.Transparent,

@@ -12,6 +12,10 @@ class LoginViewModel : ViewModel() {
     var customLogged by mutableStateOf(false)
 
     fun signIn(email: String, password: String) {
+        if(email.trim().isEmpty() || password.trim().isEmpty()){
+            return
+        }
+
         manager.signIn(
             email = email,
             password = password,

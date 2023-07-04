@@ -20,7 +20,7 @@ fun LoadNetworkImage(
     contentScale: ContentScale = ContentScale.Fit,
 ) {
     val composition by rememberLottieComposition(
-        LottieCompositionSpec.JsonString(Utils.lottieJson),
+        LottieCompositionSpec.JsonString(Utils.splashLottie),
     )
     val logoAnimationState = animateLottieCompositionAsState(
         composition = composition,
