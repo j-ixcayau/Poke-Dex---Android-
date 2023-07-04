@@ -1,5 +1,6 @@
 package com.jixcayau.pokedex.features.dashboard
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,9 +10,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.jixcayau.pokedex.R
 import com.jixcayau.pokedex.composables.*
 import com.jixcayau.pokedex.features.dashboard.composables.CategoriesCard
@@ -40,63 +46,81 @@ fun DashboardView(
             },
         ) {
             BaseBody(
-                modifier = Modifier.padding(it),
+                modifier = Modifier
+                    .padding(it),
                 children = {
-                    Row(
-                        modifier = Modifier.fillMaxWidth()
+                    Column(
+                        modifier = Modifier
+                            .paint(
+                                painterResource(id = R.drawable.pokeball),
+                                contentScale = ContentScale.FillWidth
+                            )
+                            .weight(1F)
                     ) {
-                        CategoriesCard(
-                            title = stringResource(R.string.dashboard_regions),
-                            onTap = {
-                                navController.navigate(RoutesPath.Regions)
-                            },
-                            color = Colors.regionCard,
+                        Row(
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            CategoriesCard(
+                                title = stringResource(R.string.dashboard_regions),
+                                onTap = {
+                                    navController.navigate(RoutesPath.Regions)
+                                },
+                                color = Colors.regionCard,
+                            )
+
+                            CategoriesCard(
+                                title = stringResource(R.string.dashboard_teams),
+                                onTap = {
+                                    navController.navigate(RoutesPath.Teams)
+                                },
+                                color = Colors.TeamCard,
+                            )
+                        }
+
+                        VerticalSpace(
+                            AppSpaces.s,
+                            modifier = Modifier.weight(1F)
                         )
 
-                        CategoriesCard(
-                            title = stringResource(R.string.dashboard_teams),
-                            onTap = {
-                                navController.navigate(RoutesPath.Teams)
-                            },
-                            color = Colors.TeamCard,
-                        )
-                    }
+                        Row(
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            HorizontalSpace(
+                                AppSpaces.zero,
+                                modifier = Modifier.weight(0.5F)
+                            )
 
-                    VerticalSpace(
-                        AppSpaces.s,
-                        modifier = Modifier.weight(1F)
-                    )
+                            CategoriesCard(
+                                title = stringResource(R.string.dashboard_logout),
+                                onTap = {
+                                    FacebookAuthManager.logout()
+                                    googleAuthManager.logout()
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        HorizontalSpace(
-                            AppSpaces.zero,
-                            modifier = Modifier.weight(0.5F)
-                        )
-
-                        CategoriesCard(
-                            title = stringResource(R.string.dashboard_logout),
-                            onTap = {
-                                FacebookAuthManager.logout()
-                                googleAuthManager.logout()
-
-                                navController.navigate(RoutesPath.Login) {
-                                    popUpTo(RoutesPath.Dashboard) {
-                                        inclusive = true
+                                    navController.navigate(RoutesPath.Login) {
+                                        popUpTo(RoutesPath.Dashboard) {
+                                            inclusive = true
+                                        }
                                     }
-                                }
-                            },
-                            color = Colors.logOutCard,
-                        )
+                                },
+                                color = Colors.logOutCard,
+                            )
 
-                        HorizontalSpace(
-                            AppSpaces.zero,
-                            modifier = Modifier.weight(0.5F)
-                        )
+                            HorizontalSpace(
+                                AppSpaces.zero,
+                                modifier = Modifier.weight(0.5F)
+                            )
+                        }
                     }
                 },
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun DashboardViewPreview() {
+    DashboardView(
+        navController = rememberNavController()
+    )
 }
