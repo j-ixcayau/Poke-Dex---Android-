@@ -57,7 +57,7 @@ fun CreateTeamFormView(
         ) {
             BaseBody(
                 modifier = Modifier.padding(it),
-                allowScroll = false,
+                allowScroll = true,
                 children = {
                     Label(
                         value = stringResource(R.string.createTeamForm_title),

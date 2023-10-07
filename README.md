@@ -6,7 +6,8 @@ Pokedex es un app desarrollada con Jetpack Compose que utiliza el api [pokedex](
 
 Para el máximo rendimiento es recomendable usar la última versión de Android Studio:
 
-Android Studio Dolphin | 2021.3.1 Patch 1
+Android Studio Flamingo
+JDK Corretto 11.0.19
 
 ## Instalación de APK
 
