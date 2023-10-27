@@ -5,7 +5,6 @@ import android.util.Log
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.login.LoginBehavior
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.AuthResult
@@ -39,17 +38,10 @@ class FacebookAuthManager(
             ),
         )
 
-        manager.loginBehavior = LoginBehavior.NATIVE_WITH_FALLBACK
-
         manager.registerCallback(
             callbackManager,
-            object : FacebookCallback<LoginResult?> {
-                override fun onSuccess(result: LoginResult?) {
-                    if (result == null) {
-                        onAuthError(Exception("Success with null result"))
-                        return
-                    }
-
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(result: LoginResult) {
                     try {
                         val credential =
                             FacebookAuthProvider.getCredential(result.accessToken.token)

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -30,6 +31,7 @@ fun Input(
     @StringRes title: Int,
     value: MutableState<String>,
     type: InputType = InputType.Text,
+    imeAction: ImeAction = ImeAction.Next,
 ) {
     val isTextVisible = remember { mutableStateOf(type.isInitialVisible()) }
     val containsError = remember { mutableStateOf(false) }
@@ -61,6 +63,7 @@ fun Input(
         ),
         keyboardOptions = KeyboardOptions(
             keyboardType = type.keyboardType(),
+            imeAction = imeAction,
         ),
         visualTransformation = transform(isTextVisible),
         trailingIcon = type.trailingIcon(isTextVisible),
