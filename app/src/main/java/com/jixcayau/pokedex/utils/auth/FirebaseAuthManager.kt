@@ -2,7 +2,6 @@ package com.jixcayau.pokedex.utils.auth
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.jixcayau.pokedex.domain.network.teams.create.CreateTeamResponse
 
 class FirebaseAuthManager {
     fun register(

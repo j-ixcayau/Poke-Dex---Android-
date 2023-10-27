@@ -5,17 +5,28 @@ import android.app.Activity
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.navigation.NavHostController
 import com.facebook.CallbackManager
 import com.jixcayau.pokedex.R
-import com.jixcayau.pokedex.composables.*
+import com.jixcayau.pokedex.composables.HorizontalSpace
+import com.jixcayau.pokedex.composables.Input
+import com.jixcayau.pokedex.composables.InputType
+import com.jixcayau.pokedex.composables.Label
+import com.jixcayau.pokedex.composables.LabelType
+import com.jixcayau.pokedex.composables.PokeButton
+import com.jixcayau.pokedex.composables.VerticalSpace
 import com.jixcayau.pokedex.features.auth.composables.AuthBody
 import com.jixcayau.pokedex.features.auth.composables.SocialButton
-import com.jixcayau.pokedex.features.teams.edit.TeamEditViewModel
 import com.jixcayau.pokedex.utils.AppSpaces
 import com.jixcayau.pokedex.utils.RoutesPath
 import com.jixcayau.pokedex.utils.auth.FacebookAuthManager
@@ -31,6 +42,7 @@ fun RegisterView(
     val passwordValue = remember { mutableStateOf("") }
 
     val context = LocalContext.current
+    val focusManager = LocalFocusManager.current
 
     // Google Auth
     val googleAuthManager by remember {
@@ -100,6 +112,7 @@ fun RegisterView(
                 value = passwordValue,
                 title = R.string.password,
                 type = InputType.Password,
+                imeAction = ImeAction.Done
             )
 
             VerticalSpace(AppSpaces.m)
@@ -107,6 +120,8 @@ fun RegisterView(
             PokeButton(
                 text = stringResource(R.string.sign_in_button),
                 onTap = {
+                    focusManager.clearFocus()
+
                     viewModel.register(emailValue.value, passwordValue.value)
                 },
             )
